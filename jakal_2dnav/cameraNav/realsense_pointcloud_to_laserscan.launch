@@ -1,0 +1,22 @@
+<launch>
+	<!-- Node to convert the point cloud directly to a laser scan -->
+	<node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan" output="screen">
+    	<!-- Input point cloud topic from the Intel RealSense camera -->
+    	<remap from="cloud_in" to="/camera/depth/color/points" />
+    	<!-- Output laser scan topic -->
+    	<param name="scan_time" value="0.1" />
+    	<param name="range_min" value="0.1" />
+    	<param name="range_max" value="10.0" />
+        <!--
+    	<param name="target_frame" value="" />
+    	<param name="transform_tolerance" value="0.1" />
+    	<param name="use_inf" value="true" />
+    	<param name="scan_topic" value="/scan" />
+        -->
+    	<!-- Set the angle parameters for the laser scan -->
+    	<param name="angle_min" value="-1.57" />
+    	<param name="angle_max" value="1.57" />
+    	<param name="angle_increment" value="0.01" />
+	</node>
+</launch>
+
